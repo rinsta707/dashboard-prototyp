@@ -1,0 +1,18 @@
+<hcl-modal-dialog #deleteEmailModal>
+  <hcl-dialog-header>
+    {{ 'messages.tabs.messages-receiver.modals.delete.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'messages.tabs.messages-receiver.modals.delete.message' | hclTranslate }} <b>{{ mail }}</b>?</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteEmailModal.close(true)'>
+      {{ 'messages.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteEmailModal.cancel()'>
+      {{ 'messages.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+</hcl-modal-dialog>

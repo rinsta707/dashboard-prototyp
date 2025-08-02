@@ -1,0 +1,497 @@
+{
+  "lang": "en-GB",
+  "texts": {
+    "root": {
+      "title": "HAFAS API Manager",
+      "logout": "Logout"
+    },
+    "hcl-login-data": {
+      "title": "HAFAS API Manager",
+      "username": "Username",
+      "password": "Password",
+      "usernameEmpty": "Username is required",
+      "passwordEmpty": "Password is required",
+      "login": "Login",
+      "success": "User logged out successfully",
+      "error": {
+        "authentication": "Invalid username or password",
+        "blocked": "Your account is blocked",
+        "server": "Something went wrong",
+        "connection": "Connection error"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "service-consumers": {
+      "title": "Service consumers"
+    },
+    "events": {
+      "title": "Events",
+      "table": {
+        "empty": "No logs found",
+        "date": "Date",
+        "quota": "Quota",
+        "requests": "Requests",
+        "apikey": "API-Key",
+        "user": "User",
+        "service": "Service",
+        "eventtype": "Event",
+        "timeunit": "Timeunit",
+        "timeunits": {
+          "YEAR": "Year",
+          "MONTH": "Month",
+          "DAY": "Day",
+          "HOUR": "Hour",
+          "MINUTE": "Minute"
+        },
+        "events": {
+          "SOFT_QUOTA_EXCEEDED": "Soft Quota exceeded",
+          "HARD_QUOTA_EXCEEDED": "Hard Quota exceeded",
+          "ACCESS_DENIED_EVENT": "Access denied",
+          "OPEN": "Open",
+          "PROCESSED": "Processed"
+        },
+        "results": {
+          "SUCCESS": "Success",
+          "FAILURE": "Failure"
+        }
+      },
+      "filter-panel": {
+        "title": "Filtering",
+        "dateFrom": "Date from",
+        "dateTo": "Date to",
+        "event": "Event",
+        "timeunit": "Timeunit",
+        "apikey": "API-Key",
+        "service": "Service",
+        "messageText": "Message text",
+        "apply": "Apply",
+        "clear": "Clear"
+      }
+    },
+    "profiles": {
+      "title": "Profiles"
+    },
+    "service-configuration": {
+      "title": "Service configuration"
+    },
+    "system-configuration": {
+      "title": "System configuration"
+    },
+    "users": {
+      "title": "Users",
+      "addUser": "Add User",
+      "title-panel": "User management",
+      "roles": {
+        "system-admin": "System Administrator",
+        "admin": "Administrator",
+        "guest": "Guest",
+        "user": "User"
+      },
+      "table": {
+        "username": "Username",
+        "roles": "Roles",
+        "status": "Status",
+        "empty": "No users found",
+        "details": "View details",
+        "edit": "Edit user",
+        "remove": "Remove user",
+        "ROLE_SYSTEM_ADMIN": "System Administrator",
+        "ROLE_ADMIN": "Administrator",
+        "ROLE_USER": "User",
+        "ROLE_VIEWER": "Guest",
+        "block": "Block user",
+        "unblock": "Unblock user",
+        "blocked": "Blocked",
+        "active": "Active"
+      },
+      "modals": {
+        "view": {
+          "title": "User details"
+        },
+        "add": {
+          "title": "Add user",
+          "success": "User successfully added",
+          "error": "Something went wrong",
+          "user-exists": "User with that username already exists!"
+        },
+        "edit": {
+          "title": "Edit user",
+          "success": "User successfully updated",
+          "error": "Something went wrong",
+          "user-exists": "User with that username already exists!"
+        },
+        "delete": {
+          "title": "Delete user",
+          "message": "Are you sure you want to delete the user",
+          "logout-warning": "You will be automatically logged out",
+          "error": "Something went wrong",
+          "success": "User deleted"
+        },
+        "status": {
+          "title": "Confirm",
+          "message": "Are you sure you want to",
+          "error": "Something went wrong",
+          "success": "Status updated successfully",
+          "block": "block",
+          "unblock": "unblock"
+        },
+        "form": {
+          "username": "Username",
+          "password": "Password",
+          "repeat-password": "Repeat password",
+          "roles": "Roles",
+          "required": "Field is mandatory",
+          "mismatch": "Passwords don't match",
+          "min-length": "The password must be 8 characters long",
+          "roles-required": "At least one role must be selected"
+        },
+        "buttons": {
+          "save": "Save",
+          "cancel": "Cancel",
+          "close": "Close",
+          "yes": "Yes"
+        }
+      }
+    },
+    "system-logs": {
+      "title": "System logs",
+      "title-panel": "System logs",
+      "table": {
+        "empty": "No logs found",
+        "date": "Date",
+        "operation": "Operation",
+        "result": "Result",
+        "message": "Message",
+        "user": "User",
+        "operations": {
+          "ADD_USER": "User added",
+          "EDIT_USER": "User edited",
+          "DELETE_USER": "User deleted",
+          "ADD_SERVICE": "Service added",
+          "EDIT_SERVICE": "Service edited",
+          "DELETE_SERVICE": "Service deleted",
+          "ADD_PROVISIONING_OPTION": "Provisioning option added",
+          "EDIT_PROVISIONING_OPTION": "Provisioning option edited",
+          "DELETE_PROVISIONING_OPTION": "Provisioning option deleted",
+          "CHANGE_PASSWORD": "Password changed",
+          "AUTHENTICATION": "Login"
+        },
+        "results": {
+          "SUCCESS": "Success",
+          "FAILURE": "Failure"
+        }
+      },
+      "filter-panel": {
+        "title": "Filtering",
+        "dateFrom": "Date from",
+        "dateTo": "Date to",
+        "operations": "Operations",
+        "result": "Results",
+        "users": "User",
+        "messageText": "Message text",
+        "apply": "Apply",
+        "clear": "Clear"
+      }
+    },
+    "my-account": {
+      "title": "My Account",
+      "greeting": "Hello",
+      "changePassword": "Change Password",
+      "settings": "Settings",
+      "select": "Select",
+      "language": "Language:",
+      "defaultPageSize": "Default Page Size:",
+      "mailNotification": "E-Mail Notifications:",
+      "modals": {
+        "password": {
+          "password": "Password",
+          "repeat-password": "Repeat password",
+          "title": "change Password",
+          "success": "Password successfully changed",
+          "error": "Something went wrong",
+          "required": "Field is mandatory",
+          "mismatch": "Passwords don't match",
+          "min-length": "The password must be 8 characters long"
+        }
+      },
+      "result": {
+        "success": "Settings saved",
+        "error": "Something went wrong"
+      },
+      "buttons": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "close": "Close",
+        "yes": "Yes"
+      },
+      "tooltip": {
+        "language": "Select the language of API-Manager",
+        "defaultPageSize": "Sets the default number of items displayed per page in paginators",
+        "mailNotification": "Receive notifications per E-mail"
+      },
+      "locales": {
+        "en-GB": "English",
+        "de-DE": "Deutsch"
+      }
+    },
+    "available-services": {
+      "title": "Available services",
+      "addCustomService": "Add custom service",
+      "addStandardService": "Add standard service",
+      "table": {
+        "key": "Internal identifier",
+        "active": "Active",
+        "empty": "No services found",
+        "client": "Client restriction",
+        "name": "Name",
+        "details": "View details",
+        "edit": "Edit service",
+        "remove": "Remove service"
+      },
+      "modals": {
+        "view": {
+          "title": "Service details"
+        },
+        "add": {
+          "title": "Add custom service",
+          "success": "Service successfully added",
+          "successMany": "Services successfully added",
+          "error": "Something went wrong",
+          "service-exists": "Service with that key already exists!"
+        },
+        "edit": {
+          "title": "Edit service",
+          "success": "Service successfully updated",
+          "error": "Something went wrong",
+          "service-exists": "Service with that key already exists!"
+        },
+        "delete": {
+          "title": "Delete service",
+          "message": "Are you sure you want to delete the service",
+          "error": "Something went wrong",
+          "success": "Service deleted"
+        },
+        "form": {
+          "key": "Internal identifier",
+          "required": "Field is mandatory",
+          "translations": "Translations",
+          "locale": "Locale",
+          "value": "Value",
+          "missingRequiredTranslations": "At least translations with locale 'de' and locale 'en' are required."
+        },
+        "buttons": {
+          "save": "Save",
+          "cancel": "Cancel",
+          "close": "Close",
+          "yes": "Yes",
+          "add-selected": "Add selected",
+          "clear": "Clear",
+          "addTranslation": "Add translation",
+          "removeTranslation": "Remove translation"
+        }
+      }
+    },
+    "provisioning-options": {
+      "title": "Provisioning options",
+      "addCustomOption": "Add custom option",
+      "addStandardOption": "Add standard option",
+      "table": {
+        "key": "Internal identifier",
+        "empty": "No provisioning options found",
+        "name": "Name",
+        "description": "Description",
+        "type": "Type",
+        "details": "View details",
+        "edit": "Edit option",
+        "remove": "Remove option"
+      },
+      "types": {
+        "SELECT_ENUM_MULTI": "Multiple selection",
+        "SELECT_ENUM_SINGLE": "Single selection",
+        "TEXT": "Text value",
+        "BOOLEAN": "Boolean (true/false)"
+      },
+      "modals": {
+        "view": {
+          "title": "Provisioning option details"
+        },
+        "add": {
+          "title": "Add custom option",
+          "success": "Provisioning option successfully added",
+          "successMany": "Provisioning options successfully added",
+          "error": "Something went wrong",
+          "option-exists": "Provisioning option with that key already exists!"
+        },
+        "edit": {
+          "title": "Edit provisioning option",
+          "success": "Provisioning option successfully updated",
+          "error": "Something went wrong",
+          "option-exists": "Provisioning option with that key already exists!"
+        },
+        "delete": {
+          "title": "Delete provisioning option",
+          "message": "Are you sure you want to delete the provisioning option",
+          "error": "Something went wrong",
+          "success": "Provisioning option deleted"
+        },
+        "tabs": {
+          "identifier": "Identifier",
+          "names": "Names",
+          "descriptions": "Descriptions",
+          "restrictions": "Restrictions",
+          "restrictions-not-supported": "This provisioning option type doesn't support restrictions."
+        },
+        "form": {
+          "key": "Internal identifier",
+          "required": "Field is mandatory",
+          "translations": "Translations",
+          "locale": "Locale",
+          "value": "Value",
+          "missingRequiredTranslations": "At least translations with locale 'de' and locale 'en' are required.",
+          "type": "Type"
+        },
+        "buttons": {
+          "save": "Save",
+          "cancel": "Cancel",
+          "close": "Close",
+          "yes": "Yes",
+          "add-selected": "Add selected",
+          "clear": "Clear",
+          "addTranslation": "Add translation",
+          "removeTranslation": "Remove translation"
+        }
+      }
+    },
+    "provisioning-restrictions": {
+      "title": "Provisioning restrictions",
+      "add-value": "Add restriction",
+      "table": {
+        "value": "Internal identifier",
+        "empty": "No restrictions found",
+        "name": "Name",
+        "details": "View details",
+        "edit": "Edit value",
+        "remove": "Remove value"
+      },
+      "modals": {
+        "view": {
+          "title": "Provisioning restriction details"
+        },
+        "add": {
+          "title": "Add restriction",
+          "success": "Provisioning restriction successfully added",
+          "error": "Something went wrong",
+          "value-exists": "Provisioning restriction with that value already exists!"
+        },
+        "edit": {
+          "title": "Edit restriction value",
+          "success": "Provisioning restriction successfully updated",
+          "error": "Something went wrong",
+          "value-exists": "Provisioning restriction with that value already exists!",
+          "value-disabled": "Modifying the internal identifier is allowed only after saving the provisioning option."
+        },
+        "delete": {
+          "title": "Delete provisioning restriction",
+          "message": "Are you sure you want to delete the provisioning restriction",
+          "error": "Something went wrong",
+          "success": "Provisioning restriction deleted"
+        },
+        "form": {
+          "key": "Internal identifier",
+          "required": "Field is mandatory",
+          "translations": "Translations",
+          "locale": "Locale",
+          "value": "Value",
+          "missingRequiredTranslations": "At least translations with locale 'de' and locale 'en' are required."
+        },
+        "buttons": {
+          "save": "Save",
+          "cancel": "Cancel",
+          "close": "Close",
+          "yes": "Yes",
+          "clear": "Clear",
+          "addTranslation": "Add translation",
+          "removeTranslation": "Remove translation"
+        }
+      }
+    },
+    "messages": {
+      "title": "Messages",
+      "tabs": {
+        "messages-receiver": {
+          "title": "Messages Receiver",
+          "form": {
+            "required": "Field is mandatory",
+            "email": "E-mail Address"
+          },
+          "table": {
+            "email": "E-mail Address",
+            "empty": "No E-mail Receivers found",
+            "update": "Update E-mail",
+            "delete": "Delete E-mail"
+          },
+          "modals": {
+            "add": {
+              "title": "Add E-mail",
+              "success": "E-mail added successfully",
+              "error": "Something went wrong",
+              "exists": "E-mail is already registered"
+            },
+            "update": {
+              "title": "Update E-mail",
+              "success": "E-mail updated successfully",
+              "error": "Something went wrong",
+              "exists": "E-mail is already registered"
+            },
+            "delete": {
+              "title": "Delete E-mail",
+              "success": "E-mail deleted successfully",
+              "error": "Something went wrong",
+              "message": "Do you really want to delete this e-mail "
+            }
+          }
+        },
+        "quota": {
+          "titles": {
+            "soft": "Soft Quota Message",
+            "hard": "Hard Quota Message"
+          },
+          "locale": "Locale: ",
+          "modals": {
+            "add": {
+              "title": "Add Locale",
+              "enter": "Enter Locale",
+              "success": "Locale is added",
+              "exists": "That Locale already exists",
+              "error": "Something went wrong"
+            },
+            "update": {
+              "success": "Quota Template is updated",
+              "error": "Something went wrong"
+            },
+            "delete": {
+              "success": "Quota Template is deleted",
+              "error": "Something went wrong"
+            }
+          },
+          "form": {
+            "required": "Field is mandatory",
+            "email": "E-mail Address"
+          }
+        }
+      },
+      "buttons": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "delete": "Delete"
+      },
+      "confirm-modal": {
+        "title": "Delete Template",
+        "message": "Are you sure you want to delete the template "
+      }
+    }
+  }
+}

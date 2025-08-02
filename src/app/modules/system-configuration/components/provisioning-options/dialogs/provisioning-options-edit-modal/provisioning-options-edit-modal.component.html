@@ -1,0 +1,102 @@
+<hcl-modal-dialog #editOptionModal>
+
+  <hcl-dialog-header>
+    {{ 'provisioning-options.modals.edit.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+
+    <form [formGroup]="form" class="edit-option-form">
+
+      <hcl-tab-group>
+
+        <hcl-tab hcl-tab-label="{{ 'provisioning-options.modals.tabs.identifier' | hclTranslate }}">
+          <hcl-form-field>
+            <label hcl-label>{{ 'provisioning-options.modals.form.type' | hclTranslate }}: </label>
+            <hcl-select class='hcl-multi-select'
+                        formControlName="type"
+                        [hcl-select-options]="selectTypeOptions">
+            </hcl-select>
+          </hcl-form-field>
+
+          <hcl-form-input>
+            <label hcl-label>{{ 'provisioning-options.modals.form.key' | hclTranslate }}</label>
+            <input hcl-input type='text' formControlName="key"/>
+          </hcl-form-input>
+        </hcl-tab>
+
+        <hcl-tab hcl-tab-label="{{ 'provisioning-options.modals.tabs.names' | hclTranslate }}">
+          <div formArrayName="names">
+            <div *ngFor="let translation of names.controls; let i = index" [formGroupName]="i" class="provisioning-option-form">
+              <hcl-form-input class="text-input">
+                <input hcl-input type='text' formControlName="locale">
+                <hcl-label>{{ 'provisioning-options.modals.form.locale' | hclTranslate }}</hcl-label>
+              </hcl-form-input>
+              <hcl-form-input class="text-input">
+                <input hcl-input type='text' formControlName="description">
+                <hcl-label>{{ 'provisioning-options.modals.form.value' | hclTranslate }}</hcl-label>
+              </hcl-form-input>
+              <button type="button" hcl-button hcl-color="accent"  class="remove-translation-button" (click)="removeName(i)">
+                {{ 'provisioning-options.modals.buttons.removeTranslation' | hclTranslate }}
+              </button>
+            </div>
+          </div>
+
+          <button type="button" hcl-button hcl-color="primary" class="add-translation-button" (click)="addName()" style="width: 100%">
+            {{ 'provisioning-options.modals.buttons.addTranslation' | hclTranslate }}
+          </button>
+
+          <div *ngIf="form.controls['names'].errors?.['missingRequiredTranslations']" class="error-message">
+            <i hcl-icon='mat::error'></i>{{ 'provisioning-options.modals.form.missingRequiredTranslations' | hclTranslate }}
+          </div>
+
+        </hcl-tab>
+
+        <hcl-tab hcl-tab-label="{{ 'provisioning-options.modals.tabs.descriptions' | hclTranslate }}">
+          <div formArrayName="descriptions">
+            <div *ngFor="let translation of descriptions.controls; let i = index" [formGroupName]="i" class="provisioning-option-form">
+              <hcl-form-input class="text-input">
+                <input maxlength="50" hcl-input type='text' formControlName="locale">
+                <hcl-label>{{ 'provisioning-options.modals.form.locale' | hclTranslate }}</hcl-label>
+              </hcl-form-input>
+              <hcl-form-input class="text-input">
+                <input maxlength="50" hcl-input type='text' formControlName="description">
+                <hcl-label>{{ 'provisioning-options.modals.form.value' | hclTranslate }}</hcl-label>
+              </hcl-form-input>
+              <button type="button" hcl-button hcl-color="accent"  class="remove-translation-button" (click)="removeDescription(i)">
+                {{ 'provisioning-options.modals.buttons.removeTranslation' | hclTranslate }}
+              </button>
+            </div>
+          </div>
+
+          <button type="button" hcl-button hcl-color="primary" class="add-translation-button" (click)="addDescription()" style="width: 100%">
+            {{ 'provisioning-options.modals.buttons.addTranslation' | hclTranslate }}
+          </button>
+
+          <div *ngIf="form.controls['descriptions'].errors?.['missingRequiredTranslations']" class="error-message">
+            <i hcl-icon='mat::error'></i>{{ 'provisioning-options.modals.form.missingRequiredTranslations' | hclTranslate }}
+          </div>
+
+        </hcl-tab>
+
+        <hcl-tab hcl-tab-label="{{ 'provisioning-options.modals.tabs.restrictions' | hclTranslate }}" >
+          <app-provisioning-restrictions #editProvisioningRestrictionsTab *ngIf="form.controls['type'].value == 'SELECT_ENUM_MULTI' || form.controls['type'].value == 'SELECT_ENUM_SINGLE'" [viewOnly]="false" [data]="option!.restrictions"></app-provisioning-restrictions>
+          <span *ngIf="form.controls['type'].value == 'TEXT' || form.controls['type'].value == 'BOOLEAN'">{{ 'provisioning-options.modals.tabs.restrictions-not-supported' | hclTranslate }}</span>
+        </hcl-tab>
+
+      </hcl-tab-group>
+    </form>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='onSave()'>
+      {{ 'provisioning-options.modals.buttons.save' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='this.editOptionModal.cancel()'>
+      {{ 'provisioning-options.modals.buttons.close' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>
+
+

@@ -1,0 +1,48 @@
+<hcl-panel hcl-panel-title="{{ 'system-logs.filter-panel.title' | hclTranslate }}">
+
+  <div class="date-pickers">
+    <hcl-date-picker hcl-date-picker-mode='date-time'
+                     [(ngModel)]="dateFrom"
+                     hcl-picker-label="{{ 'system-logs.filter-panel.dateFrom' | hclTranslate }}"
+    />
+    <hcl-date-picker hcl-date-picker-mode='date-time'
+                     [(ngModel)]="dateTo"
+                     hcl-picker-label="{{ 'system-logs.filter-panel.dateTo' | hclTranslate }}"
+    />
+  </div>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'system-logs.filter-panel.result' | hclTranslate }}: </label>
+    <hcl-checkbox [(ngModel)]="selectSuccess" [hcl-platform-sensitive]=true>{{ 'system-logs.table.results.SUCCESS' | hclTranslate }}</hcl-checkbox>
+    <hcl-checkbox [(ngModel)]="selectFailure" [hcl-platform-sensitive]=true>{{ 'system-logs.table.results.FAILURE' | hclTranslate }}</hcl-checkbox>
+  </hcl-form-field>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'system-logs.filter-panel.users' | hclTranslate }}: </label>
+    <hcl-select class='hcl-multi-select'
+                [(ngModel)]="selectedUsers"
+                [hcl-select-options]="selectUserOptions"
+                [hcl-select-allow-multiple-options]='true'>
+    </hcl-select>
+  </hcl-form-field>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'system-logs.filter-panel.operations' | hclTranslate }}: </label>
+    <hcl-select  class='hcl-multi-select'
+                [(ngModel)]="selectedOperations"
+                [hcl-select-options]="selectOperationsOptions"
+                [hcl-select-allow-multiple-options]='true'>
+    </hcl-select>
+  </hcl-form-field>
+
+  <hcl-form-input>
+    <label hcl-label>{{ 'system-logs.filter-panel.messageText' | hclTranslate }}</label>
+    <input hcl-input type='text' [(ngModel)]="messageText"/>
+  </hcl-form-input>
+
+  <div class="filter-buttons">
+    <button hcl-button hcl-color="primary" (click)="onFilter()">{{ 'system-logs.filter-panel.apply' | hclTranslate }}</button>
+    <button hcl-button (click)="onClear()">{{ 'system-logs.filter-panel.clear' | hclTranslate }}</button>
+  </div>
+
+</hcl-panel>

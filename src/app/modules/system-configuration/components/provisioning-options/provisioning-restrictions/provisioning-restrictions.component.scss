@@ -1,0 +1,18 @@
+.panel-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title-panel-button {
+  margin-left: 10px;
+
+  .button-text {
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+}
+
+.title-panel {
+  font-size: 1em;
+  font-weight: bold;
+}

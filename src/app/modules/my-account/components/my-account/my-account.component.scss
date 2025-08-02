@@ -1,0 +1,49 @@
+.save-button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    justify-content: flex-end;
+}
+
+.form-field {
+    margin-bottom: 10px;
+}
+
+.user-input {
+    min-width: 200px;
+
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.text-input {
+    margin-top: 0;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-input {
+    display: flex;
+    align-items: center;
+}
+
+.add-user-btn {
+    font-size: 0.7em;
+}
+
+i .fingerprint-icon {
+    font-size: 1.1em;
+    line-height: 1;
+}

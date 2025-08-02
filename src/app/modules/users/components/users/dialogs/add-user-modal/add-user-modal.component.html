@@ -1,0 +1,69 @@
+<hcl-modal-dialog #addUserModal>
+
+  <hcl-dialog-header>
+    {{ 'users.modals.add.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <form [formGroup]="form">
+
+      <div class="user-form">
+        <hcl-form-input class="user-input">
+          <input maxlength="50" hcl-input type='text' autocomplete="username" formControlName="username">
+          <hcl-label>{{ 'users.modals.form.username' | hclTranslate }}<span class="required">*</span></hcl-label>
+          @if (form.controls['username'].hasError("required")) {
+            <hcl-input-error>{{ 'users.modals.form.required' | hclTranslate }}</hcl-input-error>
+          }
+        </hcl-form-input>
+
+        <hcl-form-input class="user-input">
+          <input maxlength="50" minlength="8" hcl-input type='password' autocomplete="new-password" formControlName="password">
+          <hcl-label>{{ 'users.modals.form.password' | hclTranslate }}<span class="required">*</span></hcl-label>
+          @if (form.controls['password'].hasError("required")) {
+            <hcl-input-error>{{ 'users.modals.form.required' | hclTranslate }}</hcl-input-error>
+          }
+
+          @if (form.controls['password'].hasError("minlength")) {
+            <hcl-input-error>{{ 'users.modals.form.min-length' | hclTranslate }}</hcl-input-error>
+          }
+        </hcl-form-input>
+
+        <hcl-form-input class="user-input">
+          <input maxlength="50"  minlength="8" hcl-input type='password' autocomplete="new-password" formControlName="repeatPassword">
+          <hcl-label>{{ 'users.modals.form.repeat-password' | hclTranslate }}<span class="required">*</span></hcl-label>
+          @if (form.controls['repeatPassword'].hasError("required")) {
+            <hcl-input-error>{{ 'users.modals.form.required' | hclTranslate }}</hcl-input-error>
+          }
+          @if (form.controls['repeatPassword'].hasError('mustMatch')) {
+            <hcl-input-error>{{ 'users.modals.form.mismatch' | hclTranslate }}</hcl-input-error>
+          }
+
+        </hcl-form-input>
+
+        <div hcl-form-field class="role-input">
+          <label hcl-label>{{ 'users.modals.form.roles' | hclTranslate }}<span class="required">*</span></label>
+          <div class="hcl-form-field-vertical">
+            <hcl-checkbox formControlName="isSystemAdmin">{{ 'users.roles.system-admin' | hclTranslate }}</hcl-checkbox>
+            <hcl-checkbox formControlName="isAdmin">{{ 'users.roles.admin' | hclTranslate }}</hcl-checkbox>
+            <hcl-checkbox formControlName="isUser">{{ 'users.roles.user' | hclTranslate }}</hcl-checkbox>
+            <hcl-checkbox formControlName="isGuest">{{ 'users.roles.guest' | hclTranslate }}</hcl-checkbox>
+          </div>
+        </div>
+        @if (this.form.hasError('missingRole') && this.form.touched) {
+          <hcl-input-error>{{ 'users.modals.form.roles-required' | hclTranslate }}</hcl-input-error>
+        }
+      </div>
+
+    </form>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='onSave()'>
+      {{ 'users.modals.buttons.save' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" >
+      {{ 'users.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>

@@ -1,0 +1,11 @@
+<hcl-login
+  [hcl-application-name]="applicationName"
+  [hcl-application-panel-template]="loginTemplate">
+  <ng-template #loginTemplate>
+    @if (loginError) {
+      <hcl-panel class="login-error">
+        <i hcl-icon='mat::error'></i>{{ 'hcl-login-data.error.authentication' | hclTranslate }}
+      </hcl-panel>
+    }
+  </ng-template>
+</hcl-login>

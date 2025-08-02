@@ -1,0 +1,20 @@
+<hcl-modal-dialog #statusModal>
+
+  <hcl-dialog-header>
+    {{'users.modals.status.title' | hclTranslate}}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p *ngIf="user && user.active">{{ 'users.modals.status.message' | hclTranslate }} <b>{{ 'users.modals.status.block' | hclTranslate }}</b><b> {{ user.username }}</b>?</p>
+    <p *ngIf="user && !user.active">{{ 'users.modals.status.message' | hclTranslate }} <b>{{ 'users.modals.status.unblock' | hclTranslate }}</b><b> {{ user.username }}</b>?</p>
+  </hcl-dialog-body>
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='statusModal.close(true)'>
+      {{ 'users.modals.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='statusModal.cancel()'>
+      {{ 'users.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>

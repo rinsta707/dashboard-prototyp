@@ -1,0 +1,32 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+
+    .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+    }
+
+    p {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    button {
+        margin-left: auto; 
+    }
+
+    quill-editor {
+        width: 100%;
+        padding-top: 10px;
+    }
+}

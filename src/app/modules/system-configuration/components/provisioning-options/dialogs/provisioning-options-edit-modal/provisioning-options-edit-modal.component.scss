@@ -1,0 +1,46 @@
+@import "src/assets/styles/variables";
+
+.add-translation-button {
+  margin: 10px 0;
+}
+
+.remove-translation-button {
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+.edit-option-form {
+  max-height: 500px;
+  min-height: 300px;
+}
+
+.text-input {
+  margin-bottom: 10px;
+}
+
+hcl-form-input.text-input {
+  min-width: 270px;
+}
+
+.hcl-input {
+  width: 500px;
+}
+
+.provisioning-option-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+
+.cancel-button {
+  margin-left: 10px;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  color: $base-warn-color;
+}
+
+
+

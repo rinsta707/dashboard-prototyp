@@ -1,0 +1,24 @@
+.date-pickers {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+}
+
+.date-pickers > hcl-date-picker {
+  margin-right: 1em;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1em;
+}
+
+.filter-buttons > button {
+  margin-right: 1em;
+}
+
+hcl-form-field > hcl-checkbox {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}

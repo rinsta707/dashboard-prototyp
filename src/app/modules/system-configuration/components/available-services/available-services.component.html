@@ -1,0 +1,64 @@
+<hcl-panel class="title-panel">{{ 'available-services.title' | hclTranslate }}
+  <div class="panel-buttons">
+    <button hcl-button hcl-color="primary" (click)='onAddStandardService()' class="title-panel-button">
+      <i hcl-icon='mat::add_box'></i><span class="button-text">{{ 'available-services.addStandardService' | hclTranslate }}</span>
+    </button>
+    <button hcl-button hcl-color="primary" (click)='onAddService()' class="title-panel-button">
+      <i hcl-icon='mat::add_box'></i><span class="button-text">{{ 'available-services.addCustomService' | hclTranslate }}</span>
+    </button>
+  </div>
+</hcl-panel>
+
+<table hcl-table [hcl-data]='data' [hcl-displayed-columns]='displayedColumns' (hcl-sort-changed)="onSortChange($event)" hcl-sort>
+
+  <ng-container hcl-table-column-def="key">
+    <th hcl-table-header-cell *hcl-table-header-cell-def hcl-sort-header>{{ 'available-services.table.key' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.key }}
+      }
+    </td>
+    <td hcl-table-footer-cell *hcl-table-footer-cell-def [colSpan]='displayedColumns.length'>
+      <hcl-paginator [hcl-item-length]=dataLength (hcl-page-event)='onPageChange($event)' [hcl-page-size]="userPaginatorDefault"></hcl-paginator>
+    </td>
+
+  </ng-container>
+
+  <ng-container hcl-table-column-def="name">
+    <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'available-services.table.name' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.name }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="actions" class="actions">
+    <th hcl-table-header-cell *hcl-table-header-cell-def></th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element" style="text-align: end">
+      @if (assertDataType(_element);as element) {
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::search' (click)='onViewService(element)' class="action" title="{{ 'available-services.table.details' | hclTranslate }}" ></hcl-icon>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::edit' (click)='onEditService(element)' class="action" title="{{ 'available-services.table.edit' | hclTranslate }}"></hcl-icon>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::delete' (click)='onRemoveService(element)' class="action" title="{{ 'available-services.table.remove' | hclTranslate }}"></hcl-icon>
+      }
+    </td>
+  </ng-container>
+
+  <tr hcl-table-no-data-row *hcl-table-no-data-row-def>
+    <td hcl-table-no-data-cell [colSpan]='displayedColumns.length'>
+      <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::cancel'></hcl-icon>{{ 'available-services.table.empty' | hclTranslate }}
+    </td>
+  </tr>
+
+  <tr hcl-table-header-row *hcl-table-header-row-def></tr>
+  <tr hcl-table-row *hcl-table-row-def></tr>
+  <tr hcl-table-footer-row *hcl-table-footer-row-def></tr>
+
+</table>
+
+<app-available-services-view-modal #viewService></app-available-services-view-modal>
+<app-available-services-add-modal #addService (saveEvent)="saveService($event)"></app-available-services-add-modal>
+<app-available-services-add-standard-modal #addStdService (saveEvent)="saveStdServices($event)"></app-available-services-add-standard-modal>
+<app-available-services-edit-modal #editService (saveEvent)="updateService($event)"></app-available-services-edit-modal>
+<app-available-services-remove-modal #deleteService></app-available-services-remove-modal>
+

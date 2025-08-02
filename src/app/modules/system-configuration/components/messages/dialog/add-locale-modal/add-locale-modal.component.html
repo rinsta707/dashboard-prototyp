@@ -1,0 +1,26 @@
+<hcl-modal-dialog #addLocaleModal>
+  <hcl-dialog-header>
+    {{ 'messages.tabs.quota.modals.add.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <form [formGroup]="form">
+      <div class="user-form">
+        <hcl-select class="user-input"
+          hcl-select-placeholder="{{ 'my-account.select' | hclTranslate }}"
+          [hcl-comparator]='compareLanguageByCode'
+          [hcl-select-options]="options" formControlName="locale">
+        </hcl-select>
+      </div>
+    </form>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='onSave()'>
+      {{ 'messages.buttons.save' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="button" (click)='close()'>
+      {{ 'messages.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+</hcl-modal-dialog>

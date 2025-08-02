@@ -1,0 +1,15 @@
+.ripples-container {
+  display: flex;
+}
+
+.ripples {
+  display: flex;
+  flex-wrap: wrap;
+
+  app-option-ripple {
+    margin: 0 var(--hcl-global-spacer) var(--hcl-global-spacer) 0;
+  }
+
+}
+
+

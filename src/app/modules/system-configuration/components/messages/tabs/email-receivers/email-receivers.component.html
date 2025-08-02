@@ -1,0 +1,44 @@
+<hcl-panel class="title-panel">{{ 'messages.tabs.messages-receiver.title' | hclTranslate }}
+    <button hcl-button hcl-color="primary" (click)='onAddMessagesReceiver()'>
+      <i hcl-icon='mat::mail'></i><span class="title-panel-button">{{ 'messages.tabs.messages-receiver.modals.add.title' | hclTranslate }}</span>
+    </button>
+
+  </hcl-panel>
+  <table hcl-table [hcl-data]='data' [hcl-displayed-columns]='displayedColumns'>
+
+    <ng-container hcl-table-column-def="email">
+      <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'messages.tabs.messages-receiver.table.email' | hclTranslate }}</th>
+      <td hcl-table-cell *hcl-table-cell-def="let _element">
+        @if (assertDataType(_element);as element) {
+        {{ element.email }}
+        }
+      </td>
+    </ng-container>
+    <ng-container hcl-table-column-def="actions" class="actions">
+      <th hcl-table-header-cell *hcl-table-header-cell-def></th>
+      <td hcl-table-cell *hcl-table-cell-def="let _element" style="text-align: end">
+        @if (assertDataType(_element);as element) {
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::edit'  (click)='onUpdateMessagesReceiver(element)' class="action"
+          title="{{ 'messages.tabs.messages-receiver.table.update' | hclTranslate }}"></hcl-icon>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::delete'  (click)='onDeleteMessagesReceiver(element)' class="action"
+          title="{{ 'messages.tabs.messages-receiver.table.delete' | hclTranslate }}"></hcl-icon>
+        }
+      </td>
+    </ng-container>
+
+    <tr hcl-table-no-data-row *hcl-table-no-data-row-def>
+      <td hcl-table-no-data-cell [colSpan]='displayedColumns.length'>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::cancel'></hcl-icon>{{ 'messages.tabs.messages-receiver.table.empty' |
+        hclTranslate }}
+      </td>
+    </tr>
+
+    <tr hcl-table-header-row *hcl-table-header-row-def></tr>
+    <tr hcl-table-row *hcl-table-row-def></tr>
+    <tr hcl-table-footer-row *hcl-table-footer-row-def></tr>
+
+  </table>
+
+<app-add-email-modal #addEmail (saveEvent)="saveMessagesReceiver($event)"></app-add-email-modal>
+<app-delete-email-modal #deleteEmail></app-delete-email-modal>
+<app-update-email-modal #updateEmail (saveEvent)="updateMessagesReceiver($event)"></app-update-email-modal>

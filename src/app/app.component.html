@@ -1,0 +1,12 @@
+<span hcl-snackbar-host></span>
+  <hcl-navigation
+    [hcl-application-name]="applicationName"
+    [hcl-application-panel-template]="userSummary"
+    [hcl-logo-url]="logoUrl"/>
+  <ng-template #userSummary>
+    <button hcl-button hcl-color="primary" class="logout-button">
+      {{ 'root.logout' | hclTranslate }}<i hcl-icon='mat::power_settings_new'></i>
+    </button>
+  </ng-template>
+
+<hcl-error-message hcl-size='fit-content' hcl-position='bottom' hcl-label-position='start'></hcl-error-message>

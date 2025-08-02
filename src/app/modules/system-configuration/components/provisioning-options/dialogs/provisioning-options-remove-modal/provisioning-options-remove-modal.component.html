@@ -1,0 +1,20 @@
+<hcl-modal-dialog #deleteOptionModal>
+
+  <hcl-dialog-header>
+    {{ 'provisioning-options.modals.delete.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'provisioning-options.modals.delete.message' | hclTranslate }} <b>{{ option?.name }} ({{ option?.key }})</b>?</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteOptionModal.close(true)'>
+      {{ 'provisioning-options.modals.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteOptionModal.cancel()'>
+      {{ 'provisioning-options.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>

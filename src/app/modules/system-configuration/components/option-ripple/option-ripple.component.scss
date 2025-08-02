@@ -1,0 +1,28 @@
+.ripple-host {
+  height: 200px;
+  width: 200px;
+  background-color: var(--hcl-color-basic);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2%;
+  cursor: pointer;
+}
+
+.ripple-host .option {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.ripple-host i {
+  margin-bottom: 8px;
+  font-size: 5em;
+}
+
+.ripple-configuration {
+  display: flex;
+  align-items: baseline;
+  gap: var(--hcl-global-spacer);
+  margin-bottom: var(--hcl-global-spacer);
+}

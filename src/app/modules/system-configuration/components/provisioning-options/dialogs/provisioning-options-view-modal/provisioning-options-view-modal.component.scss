@@ -1,0 +1,23 @@
+.view-option-form {
+  max-height: 500px;
+}
+
+.text-input {
+  margin-bottom: 10px;
+}
+
+hcl-form-input.text-input {
+  min-width: 270px;
+}
+
+.hcl-input {
+  width: 500px;
+}
+
+.provisioning-option-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+
+

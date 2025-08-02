@@ -1,0 +1,60 @@
+<hcl-panel class="my-account-panel">{{ 'my-account.greeting' | hclTranslate }}, {{ username }}
+
+    <button hcl-button class="add-user-btn" hcl-color='primary' (click)="onEditPassword()">
+        {{ 'my-account.changePassword' | hclTranslate }}<i class="fingerprint-icon" hcl-icon='mat::fingerprint'></i>
+    </button>
+
+</hcl-panel>
+
+<hcl-panel>
+    <h2 class="text-input">{{ 'my-account.settings' | hclTranslate }}</h2>
+
+    <div class="flex-container">
+        <div class="info-container">
+            <p class="text-input">
+                <i class="icon" hcl-icon='mat::info_outlined'
+                    hcl-tooltip="{{ 'my-account.tooltip.language' | hclTranslate }}"></i>
+                {{ 'my-account.language' | hclTranslate }}
+            </p>
+            <p class="text-input">
+                <i class="icon" hcl-icon='mat::info_outlined'
+                    hcl-tooltip="{{ 'my-account.tooltip.defaultPageSize' | hclTranslate }}"></i>
+                {{ 'my-account.defaultPageSize' | hclTranslate }}
+            </p>
+            <p class="text-input" *ngIf="isAdmin">
+                <i class="icon" hcl-icon='mat::info_outlined'
+                    hcl-tooltip="{{ 'my-account.tooltip.mailNotification' | hclTranslate }}"></i>
+                {{ 'my-account.mailNotification' | hclTranslate }}
+            </p>
+        </div>
+
+        <div>
+            <form [formGroup]="form">
+                <div class="user-form">
+                    <div class="form-field">
+                        <hcl-select class="user-input" hcl-select-placeholder="{{ 'my-account.select' | hclTranslate }}"
+                            [hcl-comparator]='compareLocaleByCode' [hcl-select-options]="localeOptions"
+                            formControlName="locale">
+                        </hcl-select>
+                    </div>
+                    <div class="form-field">
+                        <hcl-select class="user-input" hcl-select-placeholder="{{ 'my-account.select' | hclTranslate }}"
+                            [hcl-comparator]='compareDefaultPageSizeOptions' [hcl-select-options]="defaultPageSizeOptions"
+                            formControlName="paginatorDefault">
+                        </hcl-select>
+                    </div>
+                    <div class="form-field" *ngIf="isAdmin">
+                        <hcl-slide-toggle formControlName="notifications"></hcl-slide-toggle>
+                    </div>
+                </div>
+            </form>
+            <div class="save-button-container">
+                <button hcl-button class="savebutton" hcl-color='primary' (click)="saveSettings()">
+                    {{ 'my-account.buttons.save' | hclTranslate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</hcl-panel>
+
+<app-change-password-modal #changePassword (saveEvent)="editPassword($event)"></app-change-password-modal>

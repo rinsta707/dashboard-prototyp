@@ -1,0 +1,20 @@
+<hcl-modal-dialog #deleteRestrictionModal>
+
+  <hcl-dialog-header>
+    {{ 'provisioning-restrictions.modals.delete.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'provisioning-restrictions.modals.delete.message' | hclTranslate }} <b>{{ restriction?.value }}<span *ngIf="restriction?.translation"> ({{ restriction?.translation }})</span></b>?</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteRestrictionModal.close(true)'>
+      {{ 'provisioning-options.modals.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteRestrictionModal.cancel()'>
+      {{ 'provisioning-options.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>

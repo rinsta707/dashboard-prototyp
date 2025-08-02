@@ -1,0 +1,18 @@
+<hcl-modal-dialog #deleteTemplateModal>
+  <hcl-dialog-header>
+    {{ 'messages.confirm-modal.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'messages.confirm-modal.message' | hclTranslate }} <b>{{ template }}</b>?</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteTemplateModal.close(true)'>
+      {{ 'messages.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteTemplateModal.cancel()'>
+      {{ 'messages.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+</hcl-modal-dialog>

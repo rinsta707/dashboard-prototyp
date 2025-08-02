@@ -1,0 +1,57 @@
+<ng-template #customModal let-modal>
+  <ix-modal>
+    <ix-modal-header>Filter</ix-modal-header>
+
+    <ix-modal-content>
+
+      <div *ngFor="let fav of favorites; let i = index" class="favorite-item">
+        <ix-button class="favorite-btn" (click)="applyFavorite(fav)">
+          {{ fav.name }}
+        </ix-button>
+        <ix-icon-button icon="trashcan" variant="danger" (click)="deleteFavorite(i)"></ix-icon-button>
+      </div>
+
+      <form [formGroup]="form">
+        <ix-layout-auto>
+          <!-- Kategorie Dropdown -->
+          <ix-field-label>Choose API User or Service</ix-field-label>
+          <ix-button #categoryTrigger>{{ selectedCategoryLabel }}</ix-button>
+          <ix-dropdown [ixDropdownTrigger]="categoryTrigger">
+            <ix-dropdown-header label="API Nutzer or Service"></ix-dropdown-header>
+            <ix-dropdown-item *ngFor="let item of sortedCategories" [label]="item" (click)="onCategorySelect(item)">
+            </ix-dropdown-item>
+          </ix-dropdown>
+
+          <!-- Anzahl anzuzeigende Einträge -->
+          <ix-field-label>Top number</ix-field-label>
+          <ix-select formControlName="showAmountSelect">
+            <ix-select-item label="5" value="5"></ix-select-item>
+            <ix-select-item label="10" value="10"></ix-select-item>
+            <ix-select-item label="All" value="all"></ix-select-item>
+          </ix-select>
+
+          <!-- HTTP-Statuscodes Mehrfachauswahl -->
+          <ix-field-label>Choose HTTP-Statuscodes</ix-field-label>
+          <ix-select formControlName="statusCodeSelect" mode="multiple">
+            <ix-select-item *ngFor="let code of sortedStatusCodes" [label]="code" [value]="code">
+            </ix-select-item>
+          </ix-select>
+
+        </ix-layout-auto>
+      </form>
+
+    </ix-modal-content>
+
+    <ix-modal-footer class="modal-footer">
+      <div class="button-row">
+        <ix-button variant="secondary" (click)="toggleFavorite()">
+          Add Favorite
+        </ix-button>
+        <ix-button (click)="onApply()" class="close-modal" (click)="modal.close('okay')">
+          Apply
+        </ix-button>
+      </div>
+    </ix-modal-footer>
+
+  </ix-modal>
+</ng-template>

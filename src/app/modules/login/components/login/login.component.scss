@@ -1,0 +1,15 @@
+@import "src/assets/styles/variables";
+
+.login-error {
+  margin-top: 1em;
+  border-color: $base-warn-color;
+  color: $base-warn-color;
+}
+.hcl-login-form .hcl-panel-body {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  margin-right: 5px;
+}

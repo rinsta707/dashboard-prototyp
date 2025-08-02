@@ -1,0 +1,82 @@
+<hcl-panel class="title-panel">{{ 'provisioning-options.title' | hclTranslate }}
+  <div class="panel-buttons">
+    <button hcl-button hcl-color="primary" (click)='onAddStandardProvisioningOption()' class="title-panel-button">
+      <i hcl-icon='mat::add_box'></i><span class="button-text">{{ 'provisioning-options.addStandardOption' | hclTranslate }}</span>
+    </button>
+    <button hcl-button hcl-color="primary" (click)='onAddCustomProvisioningOption()' class="title-panel-button">
+      <i hcl-icon='mat::add_box'></i><span class="button-text">{{ 'provisioning-options.addCustomOption' | hclTranslate }}</span>
+    </button>
+  </div>
+</hcl-panel>
+
+<table hcl-table [hcl-data]='data' [hcl-displayed-columns]='displayedColumns' (hcl-sort-changed)="onSortChange($event)" hcl-sort>
+
+  <ng-container hcl-table-column-def="key">
+    <th hcl-table-header-cell *hcl-table-header-cell-def hcl-sort-header [width]="200">{{ 'provisioning-options.table.key' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element" [width]="200">
+      @if (assertDataType(_element);as element) {
+        {{ element.key }}
+      }
+    </td>
+    <td hcl-table-footer-cell *hcl-table-footer-cell-def [colSpan]='displayedColumns.length'>
+      <hcl-paginator [hcl-item-length]=dataLength (hcl-page-event)='onPageChange($event)' [hcl-page-size]="10"></hcl-paginator>
+    </td>
+
+  </ng-container>
+
+  <ng-container hcl-table-column-def="name">
+    <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.name' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.name }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="description">
+    <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.description' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.description }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="type">
+    <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.type' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ 'provisioning-options.types.' + element.type | hclTranslate }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="actions" class="actions">
+    <th hcl-table-header-cell *hcl-table-header-cell-def></th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element" style="text-align: end">
+      @if (assertDataType(_element);as element) {
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::search' (click)='onViewProvisioningOption(element)' class="action" title="{{ 'provisioning-options.table.details' | hclTranslate }}" ></hcl-icon>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::edit' (click)='onEditProvisioningOption(element)' class="action" title="{{ 'provisioning-options.table.edit' | hclTranslate }}"></hcl-icon>
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::delete' (click)='onRemoveProvisioningOption(element)' class="action" title="{{ 'provisioning-options.table.remove' | hclTranslate }}"></hcl-icon>
+      }
+    </td>
+  </ng-container>
+
+  <tr hcl-table-no-data-row *hcl-table-no-data-row-def>
+    <td hcl-table-no-data-cell [colSpan]='displayedColumns.length'>
+      <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::cancel'></hcl-icon>{{ 'provisioning-options.table.empty' | hclTranslate }}
+    </td>
+  </tr>
+
+  <tr hcl-table-header-row *hcl-table-header-row-def></tr>
+  <tr hcl-table-row *hcl-table-row-def></tr>
+  <tr hcl-table-footer-row *hcl-table-footer-row-def></tr>
+
+</table>
+
+<app-provisioning-options-view-modal #viewOption></app-provisioning-options-view-modal>
+<app-provisioning-options-add-standard-modal #addStdOption (saveEvent)="saveStdProvisioningOptions($event)"></app-provisioning-options-add-standard-modal>
+<app-provisioning-options-add-custom-modal #addCustomOption (saveEvent)="saveCustomOption($event)"></app-provisioning-options-add-custom-modal>
+<app-provisioning-options-edit-modal #editOption (saveEvent)="updateProvisioningOption($event)"></app-provisioning-options-edit-modal>
+<app-provisioning-options-remove-modal #deleteOption></app-provisioning-options-remove-modal>
+

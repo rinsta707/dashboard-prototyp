@@ -1,0 +1,20 @@
+<hcl-modal-dialog #deleteServiceModal>
+
+  <hcl-dialog-header>
+    {{ 'available-services.modals.delete.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'available-services.modals.delete.message' | hclTranslate }} <b>{{ service?.name }} ({{ service?.key }})</b>?</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteServiceModal.close(true)'>
+      {{ 'available-services.modals.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteServiceModal.cancel()'>
+      {{ 'available-services.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>

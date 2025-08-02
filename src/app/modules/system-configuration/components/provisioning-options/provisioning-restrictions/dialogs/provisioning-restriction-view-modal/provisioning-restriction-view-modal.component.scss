@@ -1,0 +1,41 @@
+.text-input {
+  margin-bottom: 10px;
+}
+
+hcl-form-input.text-input {
+  min-width: 270px;
+}
+
+.restriction-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1em 0 1em 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0;
+}
+
+.divider span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 0 1em;
+  color: var(--hcl-text-color-disabled);
+  font-size: 0.8em;
+}
+
+.view-restriction-form {
+  max-height: 500px;
+}

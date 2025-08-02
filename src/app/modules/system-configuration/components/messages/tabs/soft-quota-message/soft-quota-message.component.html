@@ -1,0 +1,30 @@
+<hcl-panel class="title-panel">
+  {{ 'messages.tabs.quota.titles.soft' | hclTranslate }}
+  <button hcl-button hcl-color="primary" (click)="onAddMessagesTemplate()">
+    <i hcl-icon="mat::add"></i>
+    <span class="title-panel-button">{{ 'messages.tabs.quota.modals.add.title' | hclTranslate }}</span>
+  </button>
+</hcl-panel>
+
+<div *ngFor="let templateData of templateData">
+  <hcl-panel class="panel">
+    <div class="panel-header">
+      <p>{{ 'messages.tabs.quota.locale' | hclTranslate }} {{ templateData.locale }}</p>
+
+      <div class="button-group">
+        <button hcl-button type="button" hcl-color="primary" (click)="deleteMessagesTemplate(templateData)"
+          [disabled]="templateData.locale === 'en' || templateData.locale === 'de'">
+          {{ 'messages.buttons.delete' | hclTranslate }}
+        </button>
+        <button hcl-button type="button" hcl-color="primary" (click)="updateMessagesTemplate(templateData)">
+          {{ 'messages.buttons.save' | hclTranslate }}
+        </button>
+      </div>
+    </div>
+    <quill-editor [modules]="editorModules" [(ngModel)]="templateData.template">
+    </quill-editor>
+  </hcl-panel>
+</div>
+
+<app-add-locale-modal #addLocale (saveEvent)="saveMessagesTemplate($event)"></app-add-locale-modal>
+<app-delete-locale-modal #deleteTemplate></app-delete-locale-modal>

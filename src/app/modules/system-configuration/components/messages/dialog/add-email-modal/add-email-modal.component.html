@@ -1,0 +1,28 @@
+<hcl-modal-dialog #addEmailModal>
+  <hcl-dialog-header>
+    {{ 'messages.tabs.messages-receiver.modals.add.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <form [formGroup]="form">
+      <div class="user-form">
+        <hcl-form-input class="user-input">
+          <input maxlength="50" hcl-input type='text' autocomplete="email" formControlName="email">
+          <hcl-label>{{ 'messages.tabs.messages-receiver.form.email' | hclTranslate }}<span class="required">*</span></hcl-label>
+          <ng-container *ngIf="form.controls['email'].hasError('required')">
+            <hcl-input-error>{{ 'messages.tabs.messages-receiver.form.required' | hclTranslate }}</hcl-input-error>
+          </ng-container>
+        </hcl-form-input>
+      </div>
+    </form>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='onSave()'>
+      {{ 'messages.buttons.save' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="button" (click)='close()'>
+      {{ 'messages.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+</hcl-modal-dialog>

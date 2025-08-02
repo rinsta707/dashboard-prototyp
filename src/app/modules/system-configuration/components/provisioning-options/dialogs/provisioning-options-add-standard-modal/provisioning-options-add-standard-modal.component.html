@@ -1,0 +1,88 @@
+<hcl-modal-dialog #addStdOptionModal>
+
+  <hcl-dialog-header>
+    {{ 'provisioning-options.addStandardOption' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+
+    <div class="default-options">
+      <table hcl-table class="default-options" [hcl-data]='data' [hcl-displayed-columns]='displayedColumns' (hcl-sort-changed)="onSortChange($event)" hcl-sort>
+
+        <ng-container hcl-table-column-def="actionCheckbox">
+          <th hcl-table-header-cell *hcl-table-header-cell-def></th>
+          <td hcl-table-cell *hcl-table-cell-def="let element">
+            <hcl-checkbox [ngModel]="element.selected"
+                          (ngModelChange)="onSelectChange($event, element)"></hcl-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container hcl-table-column-def="key">
+          <th hcl-table-header-cell *hcl-table-header-cell-def hcl-sort-header [width]="200">{{ 'provisioning-options.table.key' | hclTranslate }}</th>
+          <td hcl-table-cell *hcl-table-cell-def="let _element" [width]="200">
+            @if (assertDataType(_element);as element) {
+              {{ element.key }}
+            }
+          </td>
+          <td hcl-table-footer-cell *hcl-table-footer-cell-def [colSpan]='displayedColumns.length'>
+            <hcl-paginator [hcl-item-length]=dataLength (hcl-page-event)='onPageChange($event)' [hcl-page-size]="10"></hcl-paginator>
+          </td>
+
+        </ng-container>
+
+        <ng-container hcl-table-column-def="name">
+          <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.name' | hclTranslate }}</th>
+          <td hcl-table-cell *hcl-table-cell-def="let _element">
+            @if (assertDataType(_element);as element) {
+              {{ element.name }}
+            }
+          </td>
+        </ng-container>
+
+        <ng-container hcl-table-column-def="description">
+          <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.description' | hclTranslate }}</th>
+          <td hcl-table-cell *hcl-table-cell-def="let _element">
+            @if (assertDataType(_element);as element) {
+              {{ element.description }}
+            }
+          </td>
+        </ng-container>
+
+        <ng-container hcl-table-column-def="type">
+          <th hcl-table-header-cell *hcl-table-header-cell-def>{{ 'provisioning-options.table.type' | hclTranslate }}</th>
+          <td hcl-table-cell *hcl-table-cell-def="let _element">
+            @if (assertDataType(_element);as element) {
+              {{ 'provisioning-options.types.' + element.type | hclTranslate }}
+            }
+          </td>
+        </ng-container>
+
+        <tr hcl-table-no-data-row *hcl-table-no-data-row-def>
+          <td hcl-table-no-data-cell [colSpan]='displayedColumns.length'>
+            <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::cancel'></hcl-icon>{{ 'provisioning-options.table.empty' | hclTranslate }}
+          </td>
+        </tr>
+
+        <tr hcl-table-header-row *hcl-table-header-row-def></tr>
+        <tr hcl-table-row *hcl-table-row-def></tr>
+        <tr hcl-table-footer-row *hcl-table-footer-row-def></tr>
+
+      </table>
+    </div>
+
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='onSave()' [disabled]="selectedOptions.length == 0">
+      {{ 'provisioning-options.modals.buttons.add-selected' | hclTranslate }} ({{ selectedOptions.length }})
+    </button>
+    <button hcl-button type='button' (click)='clear()' class="clear-selection-button">
+      {{ 'provisioning-options.modals.buttons.clear' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' (click)='this.addStdOptionModal.cancel()' class="cancel-button">
+      {{ 'provisioning-options.modals.buttons.close' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>
+

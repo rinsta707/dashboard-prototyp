@@ -1,0 +1,54 @@
+.dropdown-container {
+  margin-bottom: 1rem;
+}
+
+.selection-text {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #666;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* Rechtsbündig ausrichten */
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+
+.modal-footer .button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.favorites-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.favorite-btn {
+  flex: 1;
+  min-width: 8rem;
+}
+
+.favorite-name-input {
+  width: 50%;
+}
+ 
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}

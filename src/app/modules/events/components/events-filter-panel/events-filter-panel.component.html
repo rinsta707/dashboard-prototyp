@@ -1,0 +1,56 @@
+<hcl-panel hcl-panel-title="{{ 'events.filter-panel.title' | hclTranslate }}">
+
+  <div class="date-pickers">
+    <hcl-date-picker hcl-date-picker-mode='date-time'
+                     [(ngModel)]="dateFrom"
+                     hcl-picker-label="{{ 'events.filter-panel.dateFrom' | hclTranslate }}"
+                     />
+    <hcl-date-picker hcl-date-picker-mode='date-time'
+                     [(ngModel)]="dateTo"
+                     hcl-picker-label="{{ 'events.filter-panel.dateTo' | hclTranslate }}"
+                     />
+  </div>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'events.filter-panel.timeunit' | hclTranslate }}: </label>
+    <hcl-checkbox [(ngModel)]="selectYear" [hcl-platform-sensitive]=true>{{ 'events.table.timeunits.YEAR' | hclTranslate }}</hcl-checkbox>
+    <hcl-checkbox [(ngModel)]="selectMonth" [hcl-platform-sensitive]=true>{{ 'events.table.timeunits.MONTH' | hclTranslate }}</hcl-checkbox>
+    <hcl-checkbox [(ngModel)]="selectDay" [hcl-platform-sensitive]=true>{{ 'events.table.timeunits.DAY' | hclTranslate }}</hcl-checkbox>
+    <hcl-checkbox [(ngModel)]="selectHour" [hcl-platform-sensitive]=true>{{ 'events.table.timeunits.HOUR' | hclTranslate }}</hcl-checkbox>
+    <hcl-checkbox [(ngModel)]="selectMinute" [hcl-platform-sensitive]=true>{{ 'events.table.timeunits.MINUTE' | hclTranslate }}</hcl-checkbox>
+  </hcl-form-field>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'events.filter-panel.apikey' | hclTranslate }}: </label>
+    <hcl-select class='hcl-multi-select'
+                [(ngModel)]="selectedApiKey"
+                [hcl-select-options]="selectApiKeyOptions"
+                [hcl-select-allow-multiple-options]='true'>
+    </hcl-select>
+  </hcl-form-field>
+
+  <hcl-form-field>
+    <label hcl-label>{{ 'events.filter-panel.event' | hclTranslate }}: </label>
+    <hcl-select  class='hcl-multi-select'
+                [(ngModel)]="selectedEvents"
+                [hcl-select-options]="selectEventsOptions"
+                [hcl-select-allow-multiple-options]='true'>
+    </hcl-select>
+  </hcl-form-field>
+
+  <hcl-form-field >
+    <label hcl-label>{{ 'events.filter-panel.service' | hclTranslate }}: </label>
+    <hcl-select  class='hcl-multi-select'
+                [(ngModel)]="selectedServices"
+                [hcl-select-options]="selectServiceOptions"
+                [hcl-select-allow-multiple-options]='true'
+              >
+    </hcl-select>
+  </hcl-form-field>
+
+  <div class="filter-buttons">
+    <button hcl-button hcl-color="primary" (click)="onFilter()">{{ 'system-logs.filter-panel.apply' | hclTranslate }}</button>
+    <button hcl-button (click)="onClear()">{{ 'system-logs.filter-panel.clear' | hclTranslate }}</button>
+  </div>
+
+</hcl-panel>

@@ -1,0 +1,82 @@
+@import "material-design-icons/iconfont/material-icons.css";
+@import "src/assets/styles/variables";
+@import "quill/dist/quill.snow.css";
+@import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
+
+html, body { height: 100%; width: 100% }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.hcl-login-form {
+  width: 400px !important;
+  border-radius: 5px;
+}
+
+.hcl-login-form .hcl-panel-body {
+  display: flex;
+  padding: 10px !important;
+}
+
+.hcl-paginator > hcl-select {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.hcl-table-no-data-cell > hcl-icon {
+  margin-right: 5px;
+}
+
+.hcl-table-cell > hcl-icon.action {
+  font-size: 1.4em !important;
+  height: 1em !important;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 5px;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #ccc;
+  }
+
+  &:active {
+    background-color: var(--hcl-global-font-color-dark);
+    color: white;
+  }
+}
+
+.hcl-dialog {
+  padding: 0.5em 1em 0.5em 1em !important;
+}
+
+.title-panel {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.title-panel > .hcl-panel > .hcl-panel-body {
+  @extend .title-panel;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-account-panel > .hcl-panel > .hcl-panel-body {
+  font-size: 1.3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.required {
+  color: $base-warn-color;
+}
+
+.hcl-input-wrapper {
+  width: 100%;
+}
+
+.logout-button {
+  margin-left: 1em;
+}

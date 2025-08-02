@@ -1,0 +1,56 @@
+<hcl-panel class="title-panel">{{ 'provisioning-restrictions.title' | hclTranslate }}
+  <div class="panel-buttons" *ngIf="!viewOnly">
+    <button hcl-button hcl-color="primary" (click)='onAddProvisioningRestriction()' class="title-panel-button">
+      <i hcl-icon='mat::add_box'></i><span class="button-text">{{ 'provisioning-restrictions.add-value' | hclTranslate }}</span>
+    </button>
+  </div>
+</hcl-panel>
+
+<table hcl-table [hcl-data]='data' [hcl-displayed-columns]='displayedColumns' hcl-sort>
+
+  <ng-container hcl-table-column-def="value">
+    <th hcl-table-header-cell *hcl-table-header-cell-def hcl-sort-header>{{ 'provisioning-restrictions.table.value' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.value }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="translation">
+    <th hcl-table-header-cell *hcl-table-header-cell-def hcl-sort-header>{{ 'provisioning-restrictions.table.name' | hclTranslate }}</th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element">
+      @if (assertDataType(_element);as element) {
+        {{ element.translation }}
+      }
+    </td>
+  </ng-container>
+
+  <ng-container hcl-table-column-def="actions" class="actions">
+    <th hcl-table-header-cell *hcl-table-header-cell-def></th>
+    <td hcl-table-cell *hcl-table-cell-def="let _element" style="text-align: end">
+      @if (assertDataType(_element);as element) {
+        <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::search' (click)='onViewProvisioningRestriction(element)' class="action" title="{{ 'provisioning-restrictions.table.details' | hclTranslate }}" ></hcl-icon>
+        <hcl-icon *ngIf="!viewOnly" [hcl-icon-inline]='true' hcl-icon='mat::edit' (click)='onEditProvisioningRestriction(element)' class="action" title="{{ 'provisioning-restrictions.table.edit' | hclTranslate }}"></hcl-icon>
+        <hcl-icon *ngIf="!viewOnly" [hcl-icon-inline]='true' hcl-icon='mat::delete' (click)='onRemoveProvisioningRestriction(element)' class="action" title="{{ 'provisioning-restrictions.table.remove' | hclTranslate }}"></hcl-icon>
+      }
+    </td>
+  </ng-container>
+
+  <tr hcl-table-no-data-row *hcl-table-no-data-row-def>
+    <td hcl-table-no-data-cell [colSpan]='displayedColumns.length'>
+      <hcl-icon [hcl-icon-inline]='true' hcl-icon='mat::cancel'></hcl-icon>{{ 'provisioning-restrictions.table.empty' | hclTranslate }}
+    </td>
+  </tr>
+
+  <tr hcl-table-header-row *hcl-table-header-row-def></tr>
+  <tr hcl-table-row *hcl-table-row-def></tr>
+  <tr hcl-table-footer-row *hcl-table-footer-row-def></tr>
+
+</table>
+
+<app-provisioning-restriction-add-modal #addRestriction (saveEvent)="saveProvisioningRestriction($event)"></app-provisioning-restriction-add-modal>
+<app-provisioning-restriction-view-modal #viewRestriction></app-provisioning-restriction-view-modal>
+<app-provisioning-restriction-edit-modal #editRestriction (saveEvent)="editProvisioningRestriction($event)"></app-provisioning-restriction-edit-modal>
+<app-provisioning-restriction-remove-modal #deleteRestriction></app-provisioning-restriction-remove-modal>
+

@@ -1,0 +1,107 @@
+<ix-content-header slot="header" header-title="Dashboard">
+  <ix-dropdown-button variant="secondary" id="export" icon="export" title="Export Data" ghost></ix-dropdown-button>
+  <ix-dropdown trigger="export">
+    <ix-dropdown-item (click)="exportData('csv')">Export .csv</ix-dropdown-item>
+    <ix-dropdown-item (click)="exportData('xlsx')">Export .xlsx</ix-dropdown-item>
+  </ix-dropdown>
+
+  <ix-icon-button icon="clear-filter" title="Clear Filter" (click)="clearFilters()" ghost></ix-icon-button>
+  <ix-icon-button icon="add-filter" title="Add Filter" ghost (click)="openFilterModal()"></ix-icon-button>
+  <ix-date-dropdown title="Set a timeframe" outline [dateRangeOptions]="dateDropdownOptions" date-range-id="last-7"
+    (dateRangeChange)="onDateRangeChange($event)" format="yyyy-MM-dd"></ix-date-dropdown>
+</ix-content-header>
+
+<div class="grid">
+  <ix-layout-grid>
+    <ix-row>
+      <!-- API-Nutzer Chart -->
+      <ix-col>
+        <ix-card>
+          <div class="card-content-header">
+            <ix-typography id="apinutzer" format="h2" class="card-title">{{ apiUserTitle }}</ix-typography>
+            <ix-tooltip id="tooltip-apinutzer" for="#apinutzer">{{ apiUserTooltip }}</ix-tooltip>
+            <ix-icon-button [icon]="cardStates['apiUsers'] ? 'chevron-up' : 'chevron-down'"
+              (click)="toggleCard('apiUsers')" ghost color="primary"></ix-icon-button>
+          </div>
+
+          <div *ngIf="cardStates['apiUsers']">
+            <div *ngIf="hasError; else showChartAnfragen" class="echarts">
+              <ix-empty-state class="empty-state" header="No elements available" sub-header="Failed to retrieve data"
+                icon="info" action="Reset" (click)="clearFilters()"></ix-empty-state>
+            </div>
+
+            <ng-template #showChartAnfragen>
+              <div echarts [options]="userChartOptions" [theme]="theme" class="echarts"></div>
+            </ng-template>
+          </div>
+        </ix-card>
+      </ix-col>
+
+
+      <!-- HTTP-Statuscode Chart -->
+      <ix-col>
+        <ix-card>
+          <div class="card-content-header">
+            <ix-typography id="statuscode" format="h2" class="card-title">{{statuscodeTitle}}</ix-typography>
+            <ix-tooltip id="tooltip-statuscode" for="#statuscode">{{statuscodeTooltip}}</ix-tooltip>
+            <ix-icon-button [icon]="cardStates['httpStatus'] ? 'chevron-up' : 'chevron-down'"
+              (click)="toggleCard('httpStatus')" ghost color="primary"></ix-icon-button>
+          </div>
+          <div *ngIf="cardStates['httpStatus']">
+            <div *ngIf="hasError; else showChartStatusCode" class="echarts">
+              <ix-empty-state class="empty-state" header="No elements available" sub-header="Failed to retrieve data"
+                icon="info" action="Reset" (click)="clearFilters()"></ix-empty-state>
+            </div>
+            <ng-template #showChartStatusCode>
+              <div echarts [options]="statusCodeChartOptions" [theme]="theme" class="echarts"></div>
+            </ng-template>
+          </div>
+        </ix-card>
+      </ix-col>
+
+      <!-- Top-5 Liste -->
+      <ix-col>
+  <ix-card>
+    <div class="card-content-header">
+      <ix-typography id="top5list" format="h2" class="card-title">{{ topListTitle }}</ix-typography>
+      <ix-tooltip id="tooltip-top5list" for="#top5list">{{ topListTooltip }}</ix-tooltip>
+      <ix-icon-button 
+        [icon]="cardStates['topUsers'] ? 'chevron-up' : 'chevron-down'"
+        (click)="toggleCard('topUsers')" ghost color="primary">
+      </ix-icon-button>
+    </div>
+    <div *ngIf="cardStates['topUsers']">
+      <ol>
+        <li *ngFor="let item of (topListTitle.toLowerCase().includes('api users') ? topApiUsers : topServices)">
+          {{ item }}
+        </li>
+      </ol>
+    </div>
+  </ix-card>
+</ix-col>
+
+
+      <!-- Top 5 Statuscodes -->
+      <ix-col>
+        <ix-card>
+          <div class="card-content-header">
+            <ix-typography id="top5statuscodes" format="h2"
+              class="card-title">{{topListstatuscodeTitle}}</ix-typography>
+            <ix-tooltip id="tooltip-top5statuscodes" for="#top5statuscodes">{{topListstatuscodeTooltip}}</ix-tooltip>
+            <ix-icon-button [icon]="cardStates['topServices'] ? 'chevron-up' : 'chevron-down'"
+              (click)="toggleCard('topServices')" ghost color="primary"></ix-icon-button>
+          </div>
+          <div *ngIf="cardStates['topServices']">
+            <ol>
+              <li *ngFor="let code of topStatusCodes">{{ code }}</li>
+            </ol>
+          </div>
+        </ix-card>
+      </ix-col>
+
+    </ix-row>
+
+  </ix-layout-grid>
+</div>
+
+<app-filter-modal #customModal> </app-filter-modal>

@@ -1,0 +1,21 @@
+<hcl-modal-dialog #deleteUserModal>
+
+  <hcl-dialog-header>
+    {{ 'users.modals.delete.title' | hclTranslate }}
+  </hcl-dialog-header>
+
+  <hcl-dialog-body>
+    <p>{{ 'users.modals.delete.message' | hclTranslate }} <b>{{ userName }}</b>?</p>
+    <p *ngIf="loggedUser">{{ 'users.modals.delete.logout-warning' | hclTranslate }}.</p>
+  </hcl-dialog-body>
+
+  <hcl-dialog-footer>
+    <button hcl-button type='button' hcl-color="primary" (click)='deleteUserModal.close(true)'>
+      {{ 'users.modals.buttons.yes' | hclTranslate }}
+    </button>
+    <button hcl-button type='button' class="cancel-button" (click)='deleteUserModal.cancel()'>
+      {{ 'users.modals.buttons.cancel' | hclTranslate }}
+    </button>
+  </hcl-dialog-footer>
+
+</hcl-modal-dialog>
